@@ -1,0 +1,40 @@
+import { ArgumentsHost, Catch, HttpStatus, Logger } from '@nestjs/common';
+import { BaseExceptionFilter } from '@nestjs/core';
+
+@Catch()
+export class AllExceptionsFilter extends BaseExceptionFilter {
+  private readonly logger: Logger;
+
+  constructor() {
+    super();
+
+    this.logger = new Logger('AllExceptionsFilter');
+  }
+
+  catch(exception: any, host: ArgumentsHost) {
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse();
+
+    this.logger.error(exception);
+
+    const status =
+      exception?.status ||
+      exception?.statusCode ||
+      exception?.response?.statusCode ||
+      HttpStatus.INTERNAL_SERVER_ERROR;
+
+    const message =
+      status === HttpStatus.INTERNAL_SERVER_ERROR
+        ? 'Sorry we are experiencing technical problems.'
+        : exception.response?.message || '';
+
+    const error =
+      exception instanceof Error ? exception.message : exception.message.error;
+
+    response.status(status).json({
+      status,
+      error,
+      message,
+    });
+  }
+}
