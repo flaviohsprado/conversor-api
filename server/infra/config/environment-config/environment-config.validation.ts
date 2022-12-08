@@ -41,6 +41,9 @@ class EnvironmentVariables {
 
   @IsBoolean()
   public DATABASE_SYNCHRONIZE: boolean;
+
+  @IsString()
+  public ACCESS_KEY: string;
 }
 
 export function validate(config: Record<string, unknown>) {

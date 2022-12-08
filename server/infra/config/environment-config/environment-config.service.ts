@@ -66,4 +66,9 @@ export class EnvironmentConfigService
   public getDatabaseType(): string {
     return this.configService.get<string>('DATABASE_TYPE');
   }
+
+  //THIRD PARTY API
+  public getAccessKey(): string {
+    return this.configService.get<string>('ACCESS_KEY');
+  }
 }

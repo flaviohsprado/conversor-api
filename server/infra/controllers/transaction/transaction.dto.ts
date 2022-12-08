@@ -1,3 +1,4 @@
+import { IsOptionalString } from 'src/main/decorators/validators/isOptionalString.decorator';
 import { IsRequiredDate } from 'src/main/decorators/validators/isRequiredDate.decorator';
 import { IsRequiredNumber } from 'src/main/decorators/validators/isRequiredNumber.decorator';
 import { IsRequiredString } from 'src/main/decorators/validators/isRequiredString.decorator';
@@ -16,8 +17,33 @@ export class CreateTransactionDTO {
   public sourceValue: number;
 
   @IsRequiredNumber()
+  public destinationValue: number;
+
+  @IsRequiredNumber()
   public conversionRate: number;
 
   @IsRequiredDate()
-  public dateTime: Date;
+  public dateTime: Date | string;
+
+  constructor(props: CreateTransactionDTO) {
+    Object.assign(this, props);
+  }
+}
+
+export class TransactionOptionsDTO {
+  @IsOptionalString()
+  public userId: string;
+
+  @IsRequiredString()
+  public from: string;
+
+  @IsRequiredString()
+  public to: string;
+
+  @IsRequiredNumber()
+  public amount: number;
+
+  constructor(props: TransactionOptionsDTO) {
+    Object.assign(this, props);
+  }
 }

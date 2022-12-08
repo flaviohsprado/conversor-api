@@ -1,23 +1,19 @@
-import {
-  ClassSerializerInterceptor,
-  MiddlewareConsumer,
-  Module,
-} from '@nestjs/common';
+import { ClassSerializerInterceptor, Module } from '@nestjs/common';
 import { APP_GUARD } from '@nestjs/core';
 import { PassportModule } from '@nestjs/passport';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { JwtAuthGuard } from './infra/common/guards/jwt-auth.guard';
 import { TransformResponseInterceptor } from './infra/common/interceptor/transformResponse.interceptor';
-import { LoggerMiddleware } from './infra/common/middlewares/logger.middleware';
 import { JwtStrategy } from './infra/common/strategies/jwt.strategy';
 import { LocalStrategy } from './infra/common/strategies/local.strategy';
 import { EnvironmentConfigModule } from './infra/config/environment-config/environment-config.module';
 import { ControllersModule } from './infra/controllers/controllers.module';
 import { ExceptionsModule } from './infra/exceptions/exceptions.module';
 import { LoggerModule } from './infra/logger/logger.module';
+import { ApiConfigModule } from './infra/services/api/api.module';
 import { BcryptModule } from './infra/services/bcrypt/bcrypt.module';
-import { JwtModule } from './infra/services/jwt/jwt.module';
+import { JwtModule as JwtServiceModule } from './infra/services/jwt/jwt.module';
 
 @Module({
   imports: [
@@ -32,10 +28,11 @@ import { JwtModule } from './infra/services/jwt/jwt.module';
     PassportModule,
     LoggerModule,
     ExceptionsModule,
-    JwtModule,
+    JwtServiceModule,
     BcryptModule,
     EnvironmentConfigModule,
     ControllersModule,
+    ApiConfigModule,
   ],
   providers: [
     {
@@ -50,12 +47,12 @@ import { JwtModule } from './infra/services/jwt/jwt.module';
       provide: APP_GUARD,
       useClass: JwtAuthGuard,
     },
-    LocalStrategy,
     JwtStrategy,
+    LocalStrategy,
   ],
 })
 export class AppModule {
-  configure(consumer: MiddlewareConsumer) {
+  /*configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('*');
-  }
+  }*/
 }

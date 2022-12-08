@@ -1,19 +1,29 @@
-import { Body, Controller, HttpCode, Inject, Param } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  HttpCode,
+  Inject,
+  Param,
+  Req,
+  UseGuards
+} from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
 import { Transaction } from 'src/domain/entities/transaction.entity';
+import { IAuthRequest } from 'src/domain/interfaces/authRequest.interface';
 import { Public } from 'src/main/decorators/isPublicRoute.decorator';
 import {
   CreateTransactionUseCase,
   DeleteTransactionUseCase,
   FindAllTransactionUseCase,
-  FindOneTransactionUseCase,
+  FindOneTransactionUseCase
 } from '../../../domain/use-cases/transaction/index';
 import { DeleteApiResponse } from '../../../main/decorators/requests/deleteApiResponse.decorator';
 import { GetApiResponse } from '../../../main/decorators/requests/getApiResponse.decorator';
 import { PostApiResponse } from '../../../main/decorators/requests/postApiResponse.decorator';
 import { TransactionUsecasesProxyModule } from '../../usecases-proxy/transaction/transaction-usecases-proxy.module';
 import { UseCaseProxy } from '../../usecases-proxy/usecase-proxy';
-import { CreateTransactionDTO } from './transaction.dto';
+import { TransactionOptionsDTO } from './transaction.dto';
 import { TransactionPresenter } from './transaction.presenter';
 
 @ApiTags('Transaction')
@@ -30,11 +40,17 @@ export class TransactionController {
     private readonly deleteTransactionUseCase: UseCaseProxy<DeleteTransactionUseCase>,
   ) {}
 
+  @UseGuards(AuthGuard('jwt'))
   @GetApiResponse(TransactionPresenter)
-  public async findAll(): Promise<TransactionPresenter[]> {
+  public async findAll(
+    @Req() request: IAuthRequest,
+  ): Promise<TransactionPresenter[]> {
+    const userId: string = request.user.id;
+
     const transactions = await this.findAllTransactionUseCase
       .getInstance()
-      .execute();
+      .execute(userId);
+
     return transactions.map(
       (transaction) => new TransactionPresenter(transaction),
     );
@@ -49,13 +65,22 @@ export class TransactionController {
   }
 
   @Public()
+  @UseGuards(AuthGuard('jwt'))
   @PostApiResponse(TransactionPresenter)
   public async create(
-    @Body() transaction: CreateTransactionDTO,
+    @Req() request: IAuthRequest,
+    @Body() options: TransactionOptionsDTO,
   ): Promise<TransactionPresenter> {
+    const createOptions = new TransactionOptionsDTO({
+      ...options,
+      userId: request.user.id,
+    });
+
+    const { userId, from, to, amount } = createOptions;
+
     const createdTransaction = await this.createTransactionUseCase
       .getInstance()
-      .execute(transaction);
+      .execute(userId, from, to, amount);
 
     return new TransactionPresenter(createdTransaction);
   }

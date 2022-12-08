@@ -27,7 +27,9 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
         'LocalStrategy',
         `Email or password is missing, BadRequestException`,
       );
-      this.exceptionService.throwUnauthorizedException();
+      this.exceptionService.throwUnauthorizedException({
+        message: 'Email or password is missing.',
+      });
     }
 
     const user = await this.loginUsecaseProxy

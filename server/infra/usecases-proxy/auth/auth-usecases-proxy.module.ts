@@ -1,17 +1,17 @@
-import { LoginUseCase } from '../../../domain/use-cases/auth/login.usecase';
 import { DynamicModule, Module } from '@nestjs/common';
-import { UseCaseProxy } from '../usecase-proxy';
+import { LoginUseCase } from '../../../domain/use-cases/auth/login.usecase';
 import { EnvironmentConfigModule } from '../../config/environment-config/environment-config.module';
+import { ExceptionsModule } from '../../exceptions/exceptions.module';
+import { ExceptionsService } from '../../exceptions/exceptions.service';
 import { LoggerModule } from '../../logger/logger.module';
 import { LoggerService } from '../../logger/logger.service';
 import { RepositoriesModule } from '../../repositories/repositories.module';
 import { DatabaseUserRepository } from '../../repositories/user.repository';
-import { ExceptionsModule } from '../../exceptions/exceptions.module';
-import { JwtTokenService } from '../../services/jwt/jwt.service';
-import { BcryptService } from '../../services/bcrypt/bcrypt.service';
-import { ExceptionsService } from '../../exceptions/exceptions.service';
 import { BcryptModule } from '../../services/bcrypt/bcrypt.module';
+import { BcryptService } from '../../services/bcrypt/bcrypt.service';
 import { JwtModule } from '../../services/jwt/jwt.module';
+import { JwtTokenService } from '../../services/jwt/jwt.service';
+import { UseCaseProxy } from '../usecase-proxy';
 
 @Module({
   imports: [
