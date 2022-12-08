@@ -11,8 +11,10 @@ export class DatabaseTransactionRepository implements ITransactionRepository {
     private readonly transactionEntityRepository: Repository<Transaction>,
   ) {}
 
-  public async findAll(): Promise<Transaction[]> {
-    return this.transactionEntityRepository.find();
+  public async findAll(userId: string): Promise<Transaction[]> {
+    return this.transactionEntityRepository.find({
+      where: { userId },
+    });
   }
 
   public async findOne(id: string): Promise<Transaction> {

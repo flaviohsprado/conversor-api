@@ -8,14 +8,14 @@ export class FindAllTransactionUseCase {
     private readonly cacheManager: ICacheManager,
   ) {}
 
-  public async execute(): Promise<Transaction[]> {
+  public async execute(userId: string): Promise<Transaction[]> {
     const cachedTransactions = await this.cacheManager.getCachedObject<
       Transaction[]
     >('transactions');
 
     if (cachedTransactions) return cachedTransactions;
 
-    const transactions = await this.repository.findAll();
+    const transactions = await this.repository.findAll(userId);
 
     await this.cacheManager.setObjectInCache('transactions', transactions);
 

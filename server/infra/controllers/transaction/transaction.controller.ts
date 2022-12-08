@@ -5,7 +5,7 @@ import {
   Inject,
   Param,
   Req,
-  UseGuards,
+  UseGuards
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
@@ -16,7 +16,7 @@ import {
   CreateTransactionUseCase,
   DeleteTransactionUseCase,
   FindAllTransactionUseCase,
-  FindOneTransactionUseCase,
+  FindOneTransactionUseCase
 } from '../../../domain/use-cases/transaction/index';
 import { DeleteApiResponse } from '../../../main/decorators/requests/deleteApiResponse.decorator';
 import { GetApiResponse } from '../../../main/decorators/requests/getApiResponse.decorator';
@@ -40,11 +40,17 @@ export class TransactionController {
     private readonly deleteTransactionUseCase: UseCaseProxy<DeleteTransactionUseCase>,
   ) {}
 
+  @UseGuards(AuthGuard('jwt'))
   @GetApiResponse(TransactionPresenter)
-  public async findAll(): Promise<TransactionPresenter[]> {
+  public async findAll(
+    @Req() request: IAuthRequest,
+  ): Promise<TransactionPresenter[]> {
+    const userId: string = request.user.id;
+
     const transactions = await this.findAllTransactionUseCase
       .getInstance()
-      .execute();
+      .execute(userId);
+
     return transactions.map(
       (transaction) => new TransactionPresenter(transaction),
     );
