@@ -22,6 +22,9 @@ export class Transaction {
   public sourceValue: number;
 
   @IsRequiredNumberColumn()
+  public destinationValue: number;
+
+  @IsRequiredNumberColumn()
   public conversionRate: number;
 
   @IsRequiredDateColumn()

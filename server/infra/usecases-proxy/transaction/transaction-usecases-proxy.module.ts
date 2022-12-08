@@ -1,4 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
+import { EnvironmentConfigService } from 'src/infra/config/environment-config/environment-config.service';
+import { ApiConfigModule } from 'src/infra/services/api/api.module';
+import { ApiConfigService } from 'src/infra/services/api/api.service';
 import {
   CreateTransactionUseCase,
   DeleteTransactionUseCase,
@@ -23,6 +26,7 @@ import { UseCaseProxy } from '../usecase-proxy';
     RepositoriesModule,
     ExceptionsModule,
     CacheConfigModule,
+    ApiConfigModule,
   ],
 })
 export class TransactionUsecasesProxyModule {
@@ -69,14 +73,31 @@ export class TransactionUsecasesProxyModule {
             ),
         },
         {
-          inject: [LoggerService, DatabaseTransactionRepository],
+          inject: [
+            LoggerService,
+            DatabaseTransactionRepository,
+            ExceptionsService,
+            ApiConfigService,
+            EnvironmentConfigService,
+          ],
           provide:
             TransactionUsecasesProxyModule.POST_TRANSACTION_USECASES_PROXY,
           useFactory: (
             logger: LoggerService,
             repository: DatabaseTransactionRepository,
+            exceptionService: ExceptionsService,
+            service: ApiConfigService,
+            config: EnvironmentConfigService,
           ) =>
-            new UseCaseProxy(new CreateTransactionUseCase(logger, repository)),
+            new UseCaseProxy(
+              new CreateTransactionUseCase(
+                logger,
+                repository,
+                exceptionService,
+                service,
+                config,
+              ),
+            ),
         },
         {
           inject: [

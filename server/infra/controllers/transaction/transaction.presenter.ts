@@ -17,6 +17,9 @@ export class TransactionPresenter {
   public sourceValue: number;
 
   @ApiProperty()
+  public destinationValue: number;
+
+  @ApiProperty()
   public conversionRate: number;
 
   @ApiProperty()

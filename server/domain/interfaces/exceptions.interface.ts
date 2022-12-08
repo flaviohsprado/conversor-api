@@ -1,6 +1,7 @@
 export interface IFormatExceptionMessage {
   message: string;
   statusCode?: number;
+  error?: string;
 }
 
 export interface IExceptionService {

@@ -21,6 +21,7 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
       exception?.status ||
       exception?.statusCode ||
       exception?.response?.statusCode ||
+      exception?.response?.status ||
       HttpStatus.INTERNAL_SERVER_ERROR;
 
     const message =
@@ -29,12 +30,17 @@ export class AllExceptionsFilter extends BaseExceptionFilter {
         : exception.response?.message || '';
 
     const error =
-      exception instanceof Error ? exception.message : exception.message.error;
+      status === HttpStatus.INTERNAL_SERVER_ERROR
+        ? 'Sorry we are experiencing technical problems.'
+        : exception.message.error ||
+          exception.response.error ||
+          exception.response.data.message ||
+          '';
 
     response.status(status).json({
       status,
-      error,
       message,
+      error,
     });
   }
 }
