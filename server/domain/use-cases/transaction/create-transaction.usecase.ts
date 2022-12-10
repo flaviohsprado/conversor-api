@@ -1,13 +1,13 @@
 import { HttpStatus } from '@nestjs/common';
-import { IApiService } from 'src/domain/interfaces/api.interface';
-import { IExceptionService } from 'src/domain/interfaces/exceptions.interface';
+import { IApiService } from '../../../domain/interfaces/api.interface';
+import { IExceptionService } from '../../../domain/interfaces/exceptions.interface';
 import {
   ISuccessTransaction,
-  ITransaction,
-} from 'src/domain/interfaces/transaction.interface';
-import { ITransactionRepository } from 'src/domain/repositories/transaction.repository';
-import { EnvironmentConfigService } from 'src/infra/config/environment-config/environment-config.service';
-import { CreateTransactionDTO } from 'src/infra/controllers/transaction/transaction.dto';
+  ITransaction
+} from '../../../domain/interfaces/transaction.interface';
+import { ITransactionRepository } from '../../../domain/repositories/transaction.repository';
+import { EnvironmentConfigService } from '../../../infra/config/environment-config/environment-config.service';
+import { CreateTransactionDTO } from '../../../infra/controllers/transaction/transaction.dto';
 import { Transaction } from '../../entities/transaction.entity';
 import { ILogger } from '../../logger/logger.interface';
 

@@ -1,30 +1,36 @@
 import { applyDecorators, Post, Type } from '@nestjs/common';
 import {
   ApiBadRequestResponse,
+  ApiCreatedResponse,
   ApiForbiddenResponse,
   ApiHeader,
   ApiInternalServerErrorResponse,
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiRequestTimeoutResponse,
-  ApiUnauthorizedResponse,
+  ApiUnauthorizedResponse
 } from '@nestjs/swagger';
 
 export const PostApiResponse = <TModel extends Type<any>>(
   model: TModel,
   param?: string,
+  required = true,
 ) => {
   return applyDecorators(
     Post(param),
     ApiHeader({
       name: 'Authorization',
       description: 'Bearer token',
-      required: true,
+      required,
       example:
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImlkIjoiZGE2ZGI0N2MtN2ZlYS00ZDc0LThjYWUtZjA2Mjg1N2JiMGMyIn0.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.YLqRWhmGpB9ymV3ukLZ11AqST-PWZbJEUzX0YUhVt9I',
     }),
-    ApiOkResponse({
+    ApiCreatedResponse({
       description: 'The object has been successfully created.',
+      type: model,
+    }),
+    ApiOkResponse({
+      description: 'The object has been successfully retrieved',
       type: model,
     }),
     ApiBadRequestResponse({

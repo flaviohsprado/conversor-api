@@ -22,6 +22,11 @@ export class LoginUseCase {
       credentials.password,
     );
 
+    if (!userValidated)
+      this.exceptionService.throwNotFoundException({
+        message: 'User not found!',
+      });
+
     const accessToken = this.jwtService.createToken({
       id: userValidated.id,
       username: userValidated.username,

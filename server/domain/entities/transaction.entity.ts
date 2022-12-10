@@ -1,7 +1,7 @@
-import { IsRequiredDateColumn } from 'src/main/decorators/columns/isRequiredDateColumn.decorator';
-import { IsRequiredNumberColumn } from 'src/main/decorators/columns/isRequiredNumberColumn.decorator';
-import { IsRequiredStringColumn } from 'src/main/decorators/columns/isRequiredStringColumn.decorator';
 import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { IsRequiredDateColumn } from '../../main/decorators/columns/isRequiredDateColumn.decorator';
+import { IsRequiredNumberColumn } from '../../main/decorators/columns/isRequiredNumberColumn.decorator';
+import { IsRequiredStringColumn } from '../../main/decorators/columns/isRequiredStringColumn.decorator';
 import { User } from './user.entity';
 
 @Entity()

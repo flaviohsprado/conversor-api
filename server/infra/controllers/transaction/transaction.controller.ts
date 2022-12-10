@@ -9,15 +9,15 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
-import { Transaction } from 'src/domain/entities/transaction.entity';
-import { IAuthRequest } from 'src/domain/interfaces/authRequest.interface';
-import { Public } from 'src/main/decorators/isPublicRoute.decorator';
+import { Transaction } from '../../../domain/entities/transaction.entity';
+import { IAuthRequest } from '../../../domain/interfaces/authRequest.interface';
 import {
   CreateTransactionUseCase,
   DeleteTransactionUseCase,
   FindAllTransactionUseCase,
   FindOneTransactionUseCase
 } from '../../../domain/use-cases/transaction/index';
+import { Public } from '../../../main/decorators/isPublicRoute.decorator';
 import { DeleteApiResponse } from '../../../main/decorators/requests/deleteApiResponse.decorator';
 import { GetApiResponse } from '../../../main/decorators/requests/getApiResponse.decorator';
 import { PostApiResponse } from '../../../main/decorators/requests/postApiResponse.decorator';
