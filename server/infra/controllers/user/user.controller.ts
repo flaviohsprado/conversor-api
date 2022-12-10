@@ -1,7 +1,7 @@
 import { Body, Controller, HttpCode, Inject, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { User } from 'src/domain/entities/user.entity';
-import { Public } from 'src/main/decorators/isPublicRoute.decorator';
+import { User } from '../../../domain/entities/user.entity';
+import { Public } from '../../../main/decorators/isPublicRoute.decorator';
 import { DeleteApiResponse } from '../../../main/decorators/requests/deleteApiResponse.decorator';
 import { GetApiResponse } from '../../../main/decorators/requests/getApiResponse.decorator';
 import { PostApiResponse } from '../../../main/decorators/requests/postApiResponse.decorator';
@@ -12,7 +12,7 @@ import {
   DeleteUserUseCase,
   FindAllUserUseCase,
   FindOneUserUseCase,
-  UpdateUserUseCase,
+  UpdateUserUseCase
 } from './../../../domain/use-cases/user/index';
 import { UseCaseProxy } from './../../usecases-proxy/usecase-proxy';
 import { CreateUserDTO, UpdateUserDTO } from './user.dto';
@@ -47,7 +47,7 @@ export class UserController {
   }
 
   @Public()
-  @PostApiResponse(UserPresenter)
+  @PostApiResponse(UserPresenter, '', false)
   public async create(@Body() user: CreateUserDTO): Promise<UserPresenter> {
     const createdUser = await this.createUserUseCase
       .getInstance()

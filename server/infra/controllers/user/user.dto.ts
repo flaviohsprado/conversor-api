@@ -1,6 +1,6 @@
-import { IsOptionalString } from 'src/main/decorators/validators/isOptionalString.decorator';
-import { IsRequiredEmail } from 'src/main/decorators/validators/isRequiredEmail.decorator';
-import { IsRequiredString } from 'src/main/decorators/validators/isRequiredString.decorator';
+import { IsOptionalString } from '../../../main/decorators/validators/isOptionalString.decorator';
+import { IsRequiredEmail } from '../../../main/decorators/validators/isRequiredEmail.decorator';
+import { IsRequiredString } from '../../../main/decorators/validators/isRequiredString.decorator';
 
 export class CreateUserDTO {
   @IsRequiredString()

@@ -1,7 +1,7 @@
-import { IsOptionalStringColumn } from 'src/main/decorators/columns/isOptionalStringColumn.decorator';
-import { IsRequiredNumberColumn } from 'src/main/decorators/columns/isRequiredNumberColumn.decorator';
-import { IsRequiredStringColumn } from 'src/main/decorators/columns/isRequiredStringColumn.decorator';
 import { Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { IsOptionalStringColumn } from '../../main/decorators/columns/isOptionalStringColumn.decorator';
+import { IsRequiredNumberColumn } from '../../main/decorators/columns/isRequiredNumberColumn.decorator';
+import { IsRequiredStringColumn } from '../../main/decorators/columns/isRequiredStringColumn.decorator';
 
 @Entity()
 export class Log {
