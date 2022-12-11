@@ -1,50 +1,33 @@
-# Conversor de moedas
+# Currency Converter
 
-Você deverá implementar uma API Rest que seja capaz de realizar a conversão entre duas moedas
-utilizando taxas de conversões atualizadas de um serviço externo.
+## Purpose
 
-Para realização da conversão é necessário o ID do usuário que deseja realizar a conversão.
+This application has the purpose of converting between two currencies updated in the market. To do this, you will need to create a user to access this feature.
 
-A API deverá registrar cada transação de conversão com todas as informações relacionadas e também
-disponibilizar um endpoint para consulta das transações realizadas por um usuário.
+## Features
 
-O projeto deverá ser feito em Node.js com TypeScript.
+The application has some features, namely `user creation`, `authentication` and search for `currency conversion`.
 
-1. Deve ser possível realizar a conversão entre 4 moedas no mínimo (BRL, USD, EUR, JPY);
-1. As taxas de conversão devem ser obtidas de [https://api.exchangeratesapi.io/latest?base=USD];
-1. As transações de conversão devem ser persistidas no banco de dados (embedded) contendo:
-    * ID do usuário;
-    * Moeda origem;
-    * Valor origem;
-    * Moeda destino;
-    * Taxa de conversão utilizada;
-    * Data/Hora UTC;
-1. Uma transação com sucesso deve retornar:
-    * ID da transação
-    * ID do usuário;
-    * Moeda origem;
-    * Valor origem;
-    * Moeda destino;
-    * Valor destino;
-    * Taxa de conversão utilizada;
-    * Data/Hora UTC;
-1. Uma transação com falha conhecida deve retornar um erro HTTP 400 com a descrição da falha;
-1. Deverá existir um endpoint para listagem de todas as transações realizadas por usuário;
-1. Deve haver uma cobertura satisfatória de testes;
-1. Deve-se adicionar a esse arquivo explicações sobre como rodar a aplicação, e uma apresentação sobre o
-projeto: propósito, features, motivação das principais escolhas de tecnologias, e separação das camadas;
-1. Todo o código deve ser em inglês;
-1. Disponibilizar o código apenas nesse repositório, sem nenhuma cópia pública, para evitar plágio;
+- `User creation` is done in a simple way using bcrypt to generate hash's and encrypt passwords, it is also used together with JWT to create access token.
 
-## Itens desejáveis
-* Logs
-* Tratamento de exceções
-* Documentação
-* Coesão de commits
-* Mensagens de commits claras
-* Configuração de lint
-* Testes unitários
-* Testes de integração
-* Documentação dos endpoints
-* Estar rodando e disponível (Ex: Heroku, ou similar)
-* CI/CD
+- `Authentication` JWT and Passport resources are used for user token generation and validation. Passport JWT allows me to authenticate each endpoint of my application using JWT in a very easy way, being very flexible and being able to create specific rules for each endpoint in particular.
+
+- `Currency Conversion` it's basically a search performed on a third-party API that returns the updated value of any desired currency.
+
+
+## Technologies used
+
+The technologies chosen were [NestJS](https://docs.nestjs.com/) and Typescript, these were chosen because they were well matched at the time of development, and the NestJS framework requires some experience with [SOLID](https://en.wikipedia.org/wiki/SOLID) principles and the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg) standard, but when you have that experience it is very easy to run the job. The framework also offers a very large number of features, recipes and techniques in your documentation that are ready to use easily, allow your application to work with modules and be much more flexible and expansive. I'm also using Redis for the purpose of caching information (The TypeORM dependency itself already has this option, but I didn't want to use it for now) along with the PostgreSQL database, because they are easy to access and free.
+
+
+## Layers division
+
+This application was designed using the Clean Architecture pattern, also known as hexagonal architecture. As stated earlier, SOLID principles are used in the code, mainly the [Dependency Inversion Principle](https://en.wikipedia.org/wiki/Dependency_inversion_principle) which matches very well with NestJS dependency injection.
+
+Concretely, there are 3 main packages: `domain`, `usecases` and `infrastructure`. These packages have to respect these rules:
+
+- `domain` contains the business code and its logic, and has no outward dependency: nor on frameworks (NestJS for example), nor on `usecases` or `infrastructure` packages.
+
+- `usecases` is like a conductor. It will depend only on `domain` package to execute business logic. `use_cases` should not have any dependencies on `infrastructure`.
+
+- `infrastructure` contains all the technical details, configuration, implementations (database, web services, etc.), and must not contain any business logic. `infrastructure` has dependencies on `domain`, `usecases` and frameworks.
