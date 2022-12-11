@@ -1,19 +1,20 @@
 import { Body, Controller, HttpCode, Inject, Param } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
+import { Public } from '../../../domain/decorators/isPublicRoute.decorator';
+import { DeleteApiResponse } from '../../../domain/decorators/requests/deleteApiResponse.decorator';
+import { GetApiResponse } from '../../../domain/decorators/requests/getApiResponse.decorator';
+import { PostApiResponse } from '../../../domain/decorators/requests/postApiResponse.decorator';
+import { PutApiResponse } from '../../../domain/decorators/requests/putApiResponse.decorator';
 import { User } from '../../../domain/entities/user.entity';
-import { Public } from '../../../main/decorators/isPublicRoute.decorator';
-import { DeleteApiResponse } from '../../../main/decorators/requests/deleteApiResponse.decorator';
-import { GetApiResponse } from '../../../main/decorators/requests/getApiResponse.decorator';
-import { PostApiResponse } from '../../../main/decorators/requests/postApiResponse.decorator';
-import { PutApiResponse } from '../../../main/decorators/requests/putApiResponse.decorator';
-import { UserUsecasesProxyModule } from '../../usecases-proxy/user/user-usecases-proxy.module';
+
 import {
   CreateUserUseCase,
   DeleteUserUseCase,
   FindAllUserUseCase,
   FindOneUserUseCase,
-  UpdateUserUseCase
-} from './../../../domain/use-cases/user/index';
+  UpdateUserUseCase,
+} from '../../../usecase/user';
+import { UserUsecasesProxyModule } from '../../usecases-proxy/user/user-usecases-proxy.module';
 import { UseCaseProxy } from './../../usecases-proxy/usecase-proxy';
 import { CreateUserDTO, UpdateUserDTO } from './user.dto';
 import { UserPresenter } from './user.presenter';

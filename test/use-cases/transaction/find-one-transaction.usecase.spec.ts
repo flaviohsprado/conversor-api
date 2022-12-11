@@ -1,8 +1,8 @@
 import { Transaction } from '../../../server/domain/entities/transaction.entity';
 import { ICacheManager } from '../../../server/domain/interfaces/cache.interface';
 import { IExceptionService } from '../../../server/domain/interfaces/exceptions.interface';
-import { FindOneTransactionUseCase } from '../../../server/domain/use-cases/transaction/find-one-transaction.usecase';
 import { DatabaseTransactionRepository } from '../../../server/infra/repositories/transaction.repository';
+import { FindOneTransactionUseCase } from '../../../server/usecase/transaction/find-one-transaction.usecase';
 
 describe('uses-cases/transaction', () => {
   let findOneTransactionUseCases: FindOneTransactionUseCase;

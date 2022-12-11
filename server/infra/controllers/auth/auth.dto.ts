@@ -1,4 +1,4 @@
-import { IsRequiredString } from '../../../main/decorators/validators/isRequiredString.decorator';
+import { IsRequiredString } from '../../../domain/decorators/validators/isRequiredString.decorator';
 
 export class AuthDTO {
   @IsRequiredString()

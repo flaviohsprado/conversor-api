@@ -1,8 +1,8 @@
 import { Body, Controller, Inject } from '@nestjs/common';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { LoginUseCase } from '../../../domain/use-cases/auth/login.usecase';
-import { Public } from '../../../main/decorators/isPublicRoute.decorator';
-import { PostApiResponse } from '../../../main/decorators/requests/postApiResponse.decorator';
+import { Public } from '../../../domain/decorators/isPublicRoute.decorator';
+import { PostApiResponse } from '../../../domain/decorators/requests/postApiResponse.decorator';
+import { LoginUseCase } from '../../../usecase/auth/login.usecase';
 import { AuthUsecasesProxyModule } from '../../usecases-proxy/auth/auth-usecases-proxy.module';
 import { UseCaseProxy } from '../../usecases-proxy/usecase-proxy';
 import { AuthDTO } from './auth.dto';

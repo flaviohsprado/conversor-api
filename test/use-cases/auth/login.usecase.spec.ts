@@ -5,7 +5,7 @@ import { IExceptionService } from '../../../server/domain/interfaces/exceptions.
 import { IJwtService } from '../../../server/domain/interfaces/jwt.interface';
 import { ILogger } from '../../../server/domain/logger/logger.interface';
 import { IUserRepository } from '../../../server/domain/repositories/user.repository';
-import { LoginUseCase } from '../../../server/domain/use-cases/auth/login.usecase';
+import { LoginUseCase } from '../../../server/usecase/auth/login.usecase';
 
 describe('uses-cases/auth', () => {
   let loginUseCases: LoginUseCase;

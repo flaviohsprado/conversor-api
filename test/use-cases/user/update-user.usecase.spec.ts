@@ -3,8 +3,8 @@ import { IBcryptService } from '../../../server/domain/interfaces/bcrypt.interfa
 import { IExceptionService } from '../../../server/domain/interfaces/exceptions.interface';
 import { ILogger } from '../../../server/domain/logger/logger.interface';
 import { IUserRepository } from '../../../server/domain/repositories/user.repository';
-import { UpdateUserUseCase } from '../../../server/domain/use-cases/user/update-user.usecase';
 import { UpdateUserDTO } from '../../../server/infra/controllers/user/user.dto';
+import { UpdateUserUseCase } from '../../../server/usecase/user/update-user.usecase';
 
 describe('uses-cases/user', () => {
   let updateUserUseCases: UpdateUserUseCase;

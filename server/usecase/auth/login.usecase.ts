@@ -1,11 +1,11 @@
-import { AuthDTO } from '../../../infra/controllers/auth/auth.dto';
-import { AuthPresenter } from '../../../infra/controllers/auth/auth.presenter';
-import { User } from '../../entities/user.entity';
-import { IBcryptService } from '../../interfaces/bcrypt.interface';
-import { IExceptionService } from '../../interfaces/exceptions.interface';
-import { IJwtService } from '../../interfaces/jwt.interface';
-import { ILogger } from '../../logger/logger.interface';
-import { IUserRepository } from '../../repositories/user.repository';
+import { User } from '../../domain/entities/user.entity';
+import { IBcryptService } from '../../domain/interfaces/bcrypt.interface';
+import { IExceptionService } from '../../domain/interfaces/exceptions.interface';
+import { IJwtService } from '../../domain/interfaces/jwt.interface';
+import { ILogger } from '../../domain/logger/logger.interface';
+import { IUserRepository } from '../../domain/repositories/user.repository';
+import { AuthDTO } from '../../infra/controllers/auth/auth.dto';
+import { AuthPresenter } from '../../infra/controllers/auth/auth.presenter';
 
 export class LoginUseCase {
   constructor(

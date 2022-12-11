@@ -1,7 +1,7 @@
-import { User } from '../../entities/user.entity';
-import { IUserRepository } from '../../repositories/user.repository';
-import { IExceptionService } from '../../interfaces/exceptions.interface';
-import { ICacheManager } from '../../interfaces/cache.interface';
+import { User } from '../../domain/entities/user.entity';
+import { ICacheManager } from '../../domain/interfaces/cache.interface';
+import { IExceptionService } from '../../domain/interfaces/exceptions.interface';
+import { IUserRepository } from '../../domain/repositories/user.repository';
 
 export class FindOneUserUseCase {
   constructor(

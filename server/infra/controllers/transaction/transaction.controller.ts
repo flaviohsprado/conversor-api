@@ -5,22 +5,22 @@ import {
   Inject,
   Param,
   Req,
-  UseGuards
+  UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { ApiTags } from '@nestjs/swagger';
+import { Public } from '../../../domain/decorators/isPublicRoute.decorator';
+import { DeleteApiResponse } from '../../../domain/decorators/requests/deleteApiResponse.decorator';
+import { GetApiResponse } from '../../../domain/decorators/requests/getApiResponse.decorator';
+import { PostApiResponse } from '../../../domain/decorators/requests/postApiResponse.decorator';
 import { Transaction } from '../../../domain/entities/transaction.entity';
 import { IAuthRequest } from '../../../domain/interfaces/authRequest.interface';
 import {
   CreateTransactionUseCase,
   DeleteTransactionUseCase,
   FindAllTransactionUseCase,
-  FindOneTransactionUseCase
-} from '../../../domain/use-cases/transaction/index';
-import { Public } from '../../../main/decorators/isPublicRoute.decorator';
-import { DeleteApiResponse } from '../../../main/decorators/requests/deleteApiResponse.decorator';
-import { GetApiResponse } from '../../../main/decorators/requests/getApiResponse.decorator';
-import { PostApiResponse } from '../../../main/decorators/requests/postApiResponse.decorator';
+  FindOneTransactionUseCase,
+} from '../../../usecase/transaction/index';
 import { TransactionUsecasesProxyModule } from '../../usecases-proxy/transaction/transaction-usecases-proxy.module';
 import { UseCaseProxy } from '../../usecases-proxy/usecase-proxy';
 import { TransactionOptionsDTO } from './transaction.dto';

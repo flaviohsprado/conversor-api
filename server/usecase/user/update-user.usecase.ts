@@ -1,10 +1,10 @@
 import { HttpStatus } from '@nestjs/common';
-import { IExceptionService } from '../../../domain/interfaces/exceptions.interface';
-import { UpdateUserDTO } from './../../../infra/controllers/user/user.dto';
-import { User } from './../../entities/user.entity';
-import { IBcryptService } from './../../interfaces/bcrypt.interface';
-import { ILogger } from './../../logger/logger.interface';
-import { IUserRepository } from './../../repositories/user.repository';
+import { User } from '../../domain/entities/user.entity';
+import { IBcryptService } from '../../domain/interfaces/bcrypt.interface';
+import { IExceptionService } from '../../domain/interfaces/exceptions.interface';
+import { ILogger } from '../../domain/logger/logger.interface';
+import { IUserRepository } from '../../domain/repositories/user.repository';
+import { UpdateUserDTO } from '../../infra/controllers/user/user.dto';
 
 export class UpdateUserUseCase {
   constructor(

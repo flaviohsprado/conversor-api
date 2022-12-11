@@ -2,7 +2,7 @@ import {
   CallHandler,
   ExecutionContext,
   Injectable,
-  NestInterceptor
+  NestInterceptor,
 } from '@nestjs/common';
 import { AbstractHttpAdapter, HttpAdapterHost } from '@nestjs/core';
 import { map, Observable } from 'rxjs';

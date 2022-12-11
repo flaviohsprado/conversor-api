@@ -3,7 +3,7 @@ import { IBcryptService } from '../../../server/domain/interfaces/bcrypt.interfa
 import { IExceptionService } from '../../../server/domain/interfaces/exceptions.interface';
 import { ILogger } from '../../../server/domain/logger/logger.interface';
 import { IUserRepository } from '../../../server/domain/repositories/user.repository';
-import { CreateUserUseCase } from '../../../server/domain/use-cases/user/create-user.usecase';
+import { CreateUserUseCase } from '../../../server/usecase/user/create-user.usecase';
 
 describe('uses-cases/user', () => {
   let createUserUseCases: CreateUserUseCase;

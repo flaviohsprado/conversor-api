@@ -1,15 +1,15 @@
 import { HttpStatus } from '@nestjs/common';
-import { IApiService } from '../../../domain/interfaces/api.interface';
-import { IExceptionService } from '../../../domain/interfaces/exceptions.interface';
+import { Transaction } from '../../domain/entities/transaction.entity';
+import { IApiService } from '../../domain/interfaces/api.interface';
+import { IExceptionService } from '../../domain/interfaces/exceptions.interface';
 import {
   ISuccessTransaction,
-  ITransaction
-} from '../../../domain/interfaces/transaction.interface';
-import { ITransactionRepository } from '../../../domain/repositories/transaction.repository';
-import { EnvironmentConfigService } from '../../../infra/config/environment-config/environment-config.service';
-import { CreateTransactionDTO } from '../../../infra/controllers/transaction/transaction.dto';
-import { Transaction } from '../../entities/transaction.entity';
-import { ILogger } from '../../logger/logger.interface';
+  ITransaction,
+} from '../../domain/interfaces/transaction.interface';
+import { ILogger } from '../../domain/logger/logger.interface';
+import { ITransactionRepository } from '../../domain/repositories/transaction.repository';
+import { EnvironmentConfigService } from '../../infra/config/environment-config/environment-config.service';
+import { CreateTransactionDTO } from '../../infra/controllers/transaction/transaction.dto';
 
 export class CreateTransactionUseCase {
   constructor(

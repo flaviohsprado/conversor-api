@@ -1,6 +1,6 @@
-import { Transaction } from '../../entities/transaction.entity';
-import { ICacheManager } from '../../interfaces/cache.interface';
-import { ITransactionRepository } from '../../repositories/transaction.repository';
+import { Transaction } from '../../domain/entities/transaction.entity';
+import { ICacheManager } from '../../domain/interfaces/cache.interface';
+import { ITransactionRepository } from '../../domain/repositories/transaction.repository';
 
 export class FindAllTransactionUseCase {
   constructor(
