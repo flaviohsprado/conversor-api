@@ -31,3 +31,21 @@ Concretely, there are 3 main packages: `domain`, `usecases` and `infrastructure`
 - `usecases` is like a conductor. It will depend only on `domain` package to execute business logic. `use_cases` should not have any dependencies on `infrastructure`.
 
 - `infrastructure` contains all the technical details, configuration, implementations (database, web services, etc.), and must not contain any business logic. `infrastructure` has dependencies on `domain`, `usecases` and frameworks.
+
+## Install
+
+```
+npm install --force
+```
+
+## Test
+
+```
+npm test
+```
+
+## Run
+
+```
+npm run start:dev
+```
