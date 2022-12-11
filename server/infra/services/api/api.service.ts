@@ -1,7 +1,7 @@
 import { HttpService } from '@nestjs/axios';
 import { Injectable } from '@nestjs/common';
 import { AxiosResponse } from 'axios';
-import { IApiService } from 'src/domain/interfaces/api.interface';
+import { IApiService } from '../../../domain/interfaces/api.interface';
 
 @Injectable()
 export class ApiConfigService implements IApiService {

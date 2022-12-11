@@ -1,5 +1,5 @@
 import { HttpStatus } from '@nestjs/common';
-import { IExceptionService } from 'src/domain/interfaces/exceptions.interface';
+import { IExceptionService } from '../../../domain/interfaces/exceptions.interface';
 import { UpdateUserDTO } from './../../../infra/controllers/user/user.dto';
 import { User } from './../../entities/user.entity';
 import { IBcryptService } from './../../interfaces/bcrypt.interface';

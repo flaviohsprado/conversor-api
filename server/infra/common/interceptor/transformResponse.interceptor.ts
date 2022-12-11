@@ -2,11 +2,11 @@ import {
   CallHandler,
   ExecutionContext,
   Injectable,
-  NestInterceptor,
+  NestInterceptor
 } from '@nestjs/common';
 import { AbstractHttpAdapter, HttpAdapterHost } from '@nestjs/core';
 import { map, Observable } from 'rxjs';
-import { NestResponse } from 'src/domain/core/http/nestResponse';
+import { NestResponse } from '../../../domain/core/http/nestResponse';
 
 @Injectable()
 export class TransformResponseInterceptor implements NestInterceptor {

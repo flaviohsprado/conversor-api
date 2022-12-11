@@ -1,13 +1,13 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { EnvironmentConfigService } from 'src/infra/config/environment-config/environment-config.service';
-import { ApiConfigModule } from 'src/infra/services/api/api.module';
-import { ApiConfigService } from 'src/infra/services/api/api.service';
 import {
   CreateTransactionUseCase,
   DeleteTransactionUseCase,
   FindAllTransactionUseCase,
-  FindOneTransactionUseCase,
+  FindOneTransactionUseCase
 } from '../../../domain/use-cases/transaction';
+import { EnvironmentConfigService } from '../../../infra/config/environment-config/environment-config.service';
+import { ApiConfigModule } from '../../../infra/services/api/api.module';
+import { ApiConfigService } from '../../../infra/services/api/api.service';
 import { EnvironmentConfigModule } from '../../config/environment-config/environment-config.module';
 import { CacheConfigModule } from '../../config/redis/cache.module';
 import { CacheService } from '../../config/redis/cache.service';
