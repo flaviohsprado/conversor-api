@@ -3,8 +3,8 @@ import { IApiService } from '../../../server/domain/interfaces/api.interface';
 import { IExceptionService } from '../../../server/domain/interfaces/exceptions.interface';
 import { ILogger } from '../../../server/domain/logger/logger.interface';
 import { ITransactionRepository } from '../../../server/domain/repositories/transaction.repository';
-import { CreateTransactionUseCase } from '../../../server/domain/use-cases/transaction/create-transaction.usecase';
 import { EnvironmentConfigService } from '../../../server/infra/config/environment-config/environment-config.service';
+import { CreateTransactionUseCase } from '../../../server/usecase/transaction/create-transaction.usecase';
 
 describe('uses-cases/transaction', () => {
   let createTransactionUseCases: CreateTransactionUseCase;

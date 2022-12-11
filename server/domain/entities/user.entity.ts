@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { IsRequiredStringColumn } from '../../main/decorators/columns/isRequiredStringColumn.decorator';
+import { IsRequiredStringColumn } from '../decorators/columns/isRequiredStringColumn.decorator';
 import { Transaction } from './transaction.entity';
 
 @Entity()

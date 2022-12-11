@@ -1,8 +1,8 @@
 import { HttpStatus } from '@nestjs/common';
-import { Transaction } from '../../entities/transaction.entity';
-import { IExceptionService } from '../../interfaces/exceptions.interface';
-import { ILogger } from '../../logger/logger.interface';
-import { ITransactionRepository } from '../../repositories/transaction.repository';
+import { Transaction } from '../../domain/entities/transaction.entity';
+import { IExceptionService } from '../../domain/interfaces/exceptions.interface';
+import { ILogger } from '../../domain/logger/logger.interface';
+import { ITransactionRepository } from '../../domain/repositories/transaction.repository';
 
 export class DeleteTransactionUseCase {
   constructor(

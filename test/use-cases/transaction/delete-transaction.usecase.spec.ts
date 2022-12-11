@@ -2,7 +2,7 @@ import { Transaction } from '../../../server/domain/entities/transaction.entity'
 import { IExceptionService } from '../../../server/domain/interfaces/exceptions.interface';
 import { ILogger } from '../../../server/domain/logger/logger.interface';
 import { ITransactionRepository } from '../../../server/domain/repositories/transaction.repository';
-import { DeleteTransactionUseCase } from '../../../server/domain/use-cases/transaction/delete-transaction.usecase';
+import { DeleteTransactionUseCase } from '../../../server/usecase/transaction/delete-transaction.usecase';
 
 describe('uses-cases/transaction', () => {
   let deleteTransactionUseCases: DeleteTransactionUseCase;

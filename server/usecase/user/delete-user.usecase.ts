@@ -1,8 +1,8 @@
 import { HttpStatus } from '@nestjs/common';
-import { User } from '../../../domain/entities/user.entity';
-import { IExceptionService } from '../../../domain/interfaces/exceptions.interface';
-import { IUserRepository } from '../../repositories/user.repository';
-import { ILogger } from './../../logger/logger.interface';
+import { User } from '../../domain/entities/user.entity';
+import { IExceptionService } from '../../domain/interfaces/exceptions.interface';
+import { ILogger } from '../../domain/logger/logger.interface';
+import { IUserRepository } from '../../domain/repositories/user.repository';
 
 export class DeleteUserUseCase {
   constructor(

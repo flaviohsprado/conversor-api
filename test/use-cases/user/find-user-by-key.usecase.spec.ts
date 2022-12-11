@@ -2,7 +2,7 @@ import { User } from '../../../server/domain/entities/user.entity';
 import { ICacheManager } from '../../../server/domain/interfaces/cache.interface';
 import { IExceptionService } from '../../../server/domain/interfaces/exceptions.interface';
 import { IUserRepository } from '../../../server/domain/repositories/user.repository';
-import { FindUserByKeyUseCase } from '../../../server/domain/use-cases/user/find-user-by-key.usecase';
+import { FindUserByKeyUseCase } from '../../../server/usecase/user/find-user-by-key.usecase';
 
 describe('uses-cases/user', () => {
   let findUserByKeyUseCases: FindUserByKeyUseCase;

@@ -1,5 +1,5 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { LoginUseCase } from '../../../domain/use-cases/auth/login.usecase';
+import { LoginUseCase } from '../../../usecase/auth/login.usecase';
 import { EnvironmentConfigModule } from '../../config/environment-config/environment-config.module';
 import { ExceptionsModule } from '../../exceptions/exceptions.module';
 import { ExceptionsService } from '../../exceptions/exceptions.service';

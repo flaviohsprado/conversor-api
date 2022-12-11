@@ -8,7 +8,7 @@ import {
   ApiNotFoundResponse,
   ApiOkResponse,
   ApiRequestTimeoutResponse,
-  ApiUnauthorizedResponse
+  ApiUnauthorizedResponse,
 } from '@nestjs/swagger';
 
 export const PostApiResponse = <TModel extends Type<any>>(

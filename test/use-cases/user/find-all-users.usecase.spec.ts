@@ -1,7 +1,7 @@
 import { User } from '../../../server/domain/entities/user.entity';
 import { ICacheManager } from '../../../server/domain/interfaces/cache.interface';
 import { IUserRepository } from '../../../server/domain/repositories/user.repository';
-import { FindAllUserUseCase } from '../../../server/domain/use-cases/user/find-all-users.usecase';
+import { FindAllUserUseCase } from '../../../server/usecase/user/find-all-users.usecase';
 
 describe('uses-cases/user', () => {
   let findAllUserUseCases: FindAllUserUseCase;

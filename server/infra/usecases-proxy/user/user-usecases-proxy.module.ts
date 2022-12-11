@@ -6,7 +6,7 @@ import {
   FindOneUserUseCase,
   FindUserByKeyUseCase,
   UpdateUserUseCase,
-} from '../../../domain/use-cases/user';
+} from '../../../usecase/user';
 import { EnvironmentConfigModule } from '../../config/environment-config/environment-config.module';
 import { CacheConfigModule } from '../../config/redis/cache.module';
 import { CacheService } from '../../config/redis/cache.service';

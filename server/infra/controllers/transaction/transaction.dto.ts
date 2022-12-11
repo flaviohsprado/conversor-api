@@ -1,7 +1,7 @@
-import { IsOptionalString } from '../../../main/decorators/validators/isOptionalString.decorator';
-import { IsRequiredDate } from '../../../main/decorators/validators/isRequiredDate.decorator';
-import { IsRequiredNumber } from '../../../main/decorators/validators/isRequiredNumber.decorator';
-import { IsRequiredString } from '../../../main/decorators/validators/isRequiredString.decorator';
+import { IsOptionalString } from '../../../domain/decorators/validators/isOptionalString.decorator';
+import { IsRequiredDate } from '../../../domain/decorators/validators/isRequiredDate.decorator';
+import { IsRequiredNumber } from '../../../domain/decorators/validators/isRequiredNumber.decorator';
+import { IsRequiredString } from '../../../domain/decorators/validators/isRequiredString.decorator';
 
 export class CreateTransactionDTO {
   @IsRequiredString()

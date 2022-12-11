@@ -1,7 +1,7 @@
 import { Transaction } from '../../../server/domain/entities/transaction.entity';
 import { ICacheManager } from '../../../server/domain/interfaces/cache.interface';
 import { ITransactionRepository } from '../../../server/domain/repositories/transaction.repository';
-import { FindAllTransactionUseCase } from '../../../server/domain/use-cases/transaction/find-all-transactions.usecase';
+import { FindAllTransactionUseCase } from '../../../server/usecase/transaction/find-all-transactions.usecase';
 
 describe('uses-cases/transaction', () => {
   let findAllTransactionUseCases: FindAllTransactionUseCase;

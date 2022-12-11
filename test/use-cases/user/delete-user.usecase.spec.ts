@@ -2,7 +2,7 @@ import { User } from '../../../server/domain/entities/user.entity';
 import { IExceptionService } from '../../../server/domain/interfaces/exceptions.interface';
 import { ILogger } from '../../../server/domain/logger/logger.interface';
 import { IUserRepository } from '../../../server/domain/repositories/user.repository';
-import { DeleteUserUseCase } from '../../../server/domain/use-cases/user/delete-user.usecase';
+import { DeleteUserUseCase } from '../../../server/usecase/user/delete-user.usecase';
 
 describe('uses-cases/user', () => {
   let deleteUserUseCases: DeleteUserUseCase;

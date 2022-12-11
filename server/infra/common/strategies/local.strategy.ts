@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy } from 'passport-local';
+import { LoginUseCase } from '../../../usecase/auth/login.usecase';
 import { ExceptionsService } from '../../exceptions/exceptions.service';
 import { LoggerService } from '../../logger/logger.service';
-import { LoginUseCase } from './../../../domain/use-cases/auth/login.usecase';
 import { AuthUsecasesProxyModule } from './../../usecases-proxy/auth/auth-usecases-proxy.module';
 import { UseCaseProxy } from './../../usecases-proxy/usecase-proxy';
 
